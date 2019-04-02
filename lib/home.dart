@@ -3,50 +3,85 @@ import "package:flutter/material.dart";
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-      child:  new Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          new Text(
-            "Hai Irfan,\nMau pesan apa?", 
-            style : new TextStyle(fontSize:20.0,),
+    return new Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "KAOS HUNTER", 
+          style: TextStyle(
+            fontFamily: 'BlackOpsOne', 
+            fontSize: 20, 
+            color: Colors.white
           ),
-          new Row(
-            children: <Widget>[
-              
-            ],
-          ) 
-        ],
+        ),
+        backgroundColor: Color(0xFF3385D9),
       ),
+      body: Container(
+        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+          child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            new Padding(
+              padding: EdgeInsets.all(10),
+            ),
+            new Text(
+              "Hai Irfan,", 
+              style : new TextStyle(fontSize:20.0,),
+            ),
+            new Text(
+              "Mau pesan apa?",
+              style : new TextStyle(fontSize:20.0,),
+            ),
+            new Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+            ),
+            new Expanded(
+              child : GridView.count(
+                crossAxisCount: 2,
+                children: <Widget>[
+                  ButtonChoice(label:"Jaket", image: "images/Jacket.png"),
+                  ButtonChoice(label:"Kaos", image: "images/Kaos.png"),
+                  ButtonChoice(label: "Jersey", image:"images/Jersey.png"),
+                  ButtonChoice(label: "Kemeja", image: "images/Kemeja.png"),
+                ],
+              ),
+            ), 
+          ],
+        ),
+      ), 
     );
-  }
+  } 
 }
 
-class ButtonOrder extends StatelessWidget {
-  ButtonOrder({this.icon, this.teks, this.warnaIcon, this.goTo});
+class ButtonChoice extends StatelessWidget {
+  final String label;
+  final String image;
 
-  final IconData icon;
-  final String teks;
-  final Color warnaIcon;
-  final String goTo;
+  ButtonChoice({this.label, this.image});
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      child: new Card(
-        child: new Column(
+    return new Card(
+      color: Color(0xFFFFD200),
+      child: new InkWell(
+        child : new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new IconButton(
-              icon : new Icon(icon, size : 50.0), 
-              color: warnaIcon,
-              onPressed: (){
-                Navigator.pushNamed(context, goTo);
-              },
+            new SizedBox(
+              width: 120,
+              height: 120,
+              child: new Image.asset(
+                this.image,
+              )
             ),
-            new Text(teks, style : new TextStyle(fontSize : 20.0))
+            new Text(
+              this.label, 
+              style: TextStyle(fontSize: 20),
+            ),
           ],
         ),
+        onTap: () {
+
+        },
       ),
     );
   }
