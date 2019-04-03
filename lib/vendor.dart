@@ -131,7 +131,7 @@ class VendorProfile extends StatelessWidget {
 
           children: <Widget>[
             new Container(
-              height: 300,
+              height: 320,
               decoration: new BoxDecoration(
                 image: new DecorationImage(
                   colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
@@ -291,8 +291,8 @@ class VendorProfile extends StatelessWidget {
         )
     );
   }
-}
 
+}
 class ChatDisplay extends StatefulWidget {
   @override
   State createState() => BubbleScreen();
