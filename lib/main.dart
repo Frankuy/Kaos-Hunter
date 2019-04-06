@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import './chat.dart' as chat;
+import './chat_update.dart' as chat;
 import './home.dart' as home;
 import './order.dart' as order;
 import './profile.dart' as profile;
@@ -62,6 +62,8 @@ TabController controller;
       bottomNavigationBar: new Material(
         color: Color(0xFF3385D9),
         child: new TabBar(
+          labelColor: Color(0xFFFFD200),
+          unselectedLabelColor: Colors.white,
           controller : controller,
           tabs : <Widget> [
             new Tab(icon: new Icon(Icons.home)),
