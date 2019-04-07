@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:firebase_auth/firebase_auth.dart';
 import './chat_update.dart' as chat;
 import './home.dart' as home;
 import './order.dart' as order;
@@ -20,7 +21,6 @@ void main() {
       routes: <String, WidgetBuilder> {
         '/login' : (BuildContext context) => new login.LoginPage(),
         '/signup' : (BuildContext context) => new signup.SignUp(),
-        '/home' : (BuildContext context) => new Main(),
       },
       home: new login.LoginPage(),
     ),
@@ -28,6 +28,9 @@ void main() {
 }
 
 class Main extends StatefulWidget {
+  const Main({Key key, @required this.user}) : super(key: key);
+  final FirebaseUser user;
+
   @override
   _MainState createState() => new _MainState(); 
 }

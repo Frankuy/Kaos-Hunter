@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "153047977314",
+    "firebase_url": "https://kaoshunter-2114a.firebaseio.com",
+    "project_id": "kaoshunter-2114a",
+    "storage_bucket": "kaoshunter-2114a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153047977314:android:211dc4d35a24f7e9",
+        "android_client_info": {
+          "package_name": "com.example.kaoshunter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "153047977314-70bfrion314p0sem58s4lv3m0p7t93fd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kaoshunter",
+            "certificate_hash": "63c50cea8635be7d3415546f1dbc8cbf0378af8b"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDms8EqmvQFIOaQpmE9Yx7wGFvvMdHsS4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "153047977314-ne4d7hdhd9qicbbtrqpheovhgk9hvvsi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -31,7 +31,6 @@ class OrderList extends State<Order> {
       (state[index]==1) ?
         new Text("Menunggu pembayaran") :
       new Text("Sedang dikerjakan");
-    ;
 
     final leftSection = new Container(
 

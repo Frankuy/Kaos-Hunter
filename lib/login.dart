@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import './main.dart' as main;
+import 'dart:async';
 
 
 class LoginPage extends StatefulWidget {
@@ -8,6 +12,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String _email, _password;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,49 +45,65 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(5),
               ),
-              Center (
-                child: TextField (
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                    hintText: "Username/Email",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                ),
-              ),
-              Padding (
-                padding: EdgeInsets.only(bottom: 10),
-              ),
-              TextField (
-                obscureText: true,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  hintText: "Password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                ),
-              ),
-              Padding (
-                padding: EdgeInsets.only(bottom: 10),
-              ),
-              Material (
-                borderRadius: BorderRadius.circular(10.0),
-                color: Color(0xFF3385D9),
-                child: MaterialButton(
-                  minWidth: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/home');
-                  },
-                  child: Text("Sign In",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField (
+                      validator: (input) {
+                        if (input.isEmpty) {
+                          return "Please input an email!";
+                        }
+                      },
+                      onSaved: (input) => _email = input,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                        hintText: "Username/Email",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: EdgeInsets.all(5),
+                    ),
+                    TextFormField (
+                      validator: (input) {
+                        if (input.length < 8) {
+                          return "Password needs to be at least 8 characters";
+                        }
+                      },
+                      onSaved: (input) => _password = input,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                        hintText: "Password",
+                        border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                    ),
+                    Material (
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color(0xFF3385D9),
+                      child: MaterialButton(
+                        minWidth: MediaQuery.of(context).size.width,
+                        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                        onPressed: signIn,
+                        child: Text("Sign In",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Center (
@@ -97,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                 child : FacebookSignInButton(onPressed: () {}),
               ),
               Padding (
-                padding: EdgeInsets.only(top: 50),
+                padding: EdgeInsets.only(top: 20),
               ),
               Center (
                 child : Row(
@@ -128,5 +152,14 @@ class _LoginPageState extends State<LoginPage> {
           )
         )
     );
+  }
+
+  Future<void> signIn() async {
+    final formState = _formKey.currentState;
+    if (formState.validate()) {
+      formState.save();
+      FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => main.Main(user: user)));
+    } 
   }
 }
