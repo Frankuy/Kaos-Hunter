@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import './main.dart' as main;
-import 'dart:async';
+import 'auth.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -13,12 +12,17 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String _email, _password;
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); 
+  final GlobalKey<ScaffoldState> _scaffoldstate = new GlobalKey<ScaffoldState>();
+
+  void _showBar(String s){
+    _scaffoldstate.currentState.showSnackBar(new SnackBar(content: new Text(s)));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldstate,
         body : Container(
           margin: EdgeInsets.only(right: 20, left: 20),
           child : ListView(
@@ -93,7 +97,21 @@ class _LoginPageState extends State<LoginPage> {
                       child: MaterialButton(
                         minWidth: MediaQuery.of(context).size.width,
                         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                        onPressed: signIn,
+                        onPressed: () {
+                          final formState = _formKey.currentState;
+                          try {
+                            if (formState.validate()) {
+                              formState.save();
+                              Auth.signIn(_email, _password)
+                                .then((FirebaseUser user) => 
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => main.Main(user: user))))
+                                .catchError((e) => _showBar("Error: "+e));
+                            }
+                          }
+                          catch(e) {
+                            _showBar('Error: $e');
+                          }
+                        },
                         child: Text("Sign In",
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -115,10 +133,23 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Center (
-                child : GoogleSignInButton(onPressed: () {}, darkMode: true),
+                child : GoogleSignInButton(
+                  onPressed: ()=> Auth.handleSignIn()
+                    .then((FirebaseUser user) => 
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => main.Main(user: user))))
+                    .catchError((e) => _showBar("Error: "+e)),
+                  darkMode: true),
               ),
               Center (
-                child : FacebookSignInButton(onPressed: () {}),
+                child : FacebookSignInButton(onPressed: ()=>Auth.signInWithFacebook()
+                  .then((FirebaseUser user) {
+                      if (Auth.status == 'Success') 
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => main.Main(user: user)));
+                      else
+                        _showBar("Error: "+Auth.status);
+                  })
+                  .catchError((e) => _showBar("Error: "+e)),
+                ),
               ),
               Padding (
                 padding: EdgeInsets.only(top: 20),
@@ -130,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       "Belum punya akun? ",
                       style: TextStyle(
-                        color: Color(0xFF4D97E2),
+                      color: Color(0xFF4D97E2),
                       ),
                     ),
                     InkWell(
@@ -152,14 +183,5 @@ class _LoginPageState extends State<LoginPage> {
           )
         )
     );
-  }
-
-  Future<void> signIn() async {
-    final formState = _formKey.currentState;
-    if (formState.validate()) {
-      formState.save();
-      FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => main.Main(user: user)));
-    } 
   }
 }

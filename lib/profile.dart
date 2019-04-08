@@ -1,4 +1,8 @@
 import "package:flutter/material.dart";
+import './profile_config.dart' as profileconfig;
+import './setting.dart' as setting;
+import './vendorfavorite.dart' as fvendor;
+import './upload.dart' as upload;
 
 class Profile extends StatelessWidget {
   @override
@@ -11,7 +15,10 @@ class Profile extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.settings, color: Colors.white,),
             onPressed: () {
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => profileconfig.Profile_config()),
+              );
             },
           ),
         ],
@@ -83,6 +90,12 @@ class Profile extends StatelessWidget {
                   title: Text(
                     "Vendor Favorit"
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => fvendor.FavoriteVendorDisplay()),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Icon(
@@ -91,6 +104,12 @@ class Profile extends StatelessWidget {
                   title: Text(
                     "Riwayat Belanja"
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => upload.Upload()),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Icon(
@@ -99,6 +118,12 @@ class Profile extends StatelessWidget {
                   title: Text(
                     "Edit Profil"
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => setting.Setting()),
+                    );
+                  },
                 ),
               ],
             ),

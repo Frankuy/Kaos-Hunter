@@ -21,6 +21,14 @@
             "package_name": "com.example.kaoshunter",
             "certificate_hash": "63c50cea8635be7d3415546f1dbc8cbf0378af8b"
           }
+        },
+        {
+          "client_id": "153047977314-3o2nh7mscmljplf30ea1fhrema3aa3ag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kaoshunter",
+            "certificate_hash": "32d16cbba19257344c3c256ab6aa5f446b01e0c6"
+          }
         }
       ],
       "api_key": [

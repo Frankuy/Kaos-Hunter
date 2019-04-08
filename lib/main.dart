@@ -7,24 +7,47 @@ import './profile.dart' as profile;
 import './vendor.dart' as vendor;
 import './login.dart' as login;
 import './signup.dart' as signup;
+import 'auth.dart';
 
-void main() {
-  runApp(
-    new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Kaos Hunter",
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-        fontFamily: "Poppins",
-      ),
-      routes: <String, WidgetBuilder> {
-        '/login' : (BuildContext context) => new login.LoginPage(),
-        '/signup' : (BuildContext context) => new signup.SignUp(),
-      },
-      home: new login.LoginPage(),
-    ),
-  );
+void main() {  
+  Auth.getCurrentUser().then((FirebaseUser user){
+    if (user != null) {
+      runApp(
+        new MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "Kaos Hunter",
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            brightness: Brightness.light,
+            fontFamily: "Poppins",
+          ),
+          routes: <String, WidgetBuilder> {
+            '/login' : (BuildContext context) => new login.LoginPage(),
+            '/signup' : (BuildContext context) => new signup.SignUp(),
+          },
+          home: new Main(user: user),
+        ),
+      );
+    }
+    else {
+      runApp(
+        new MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "Kaos Hunter",
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            brightness: Brightness.light,
+            fontFamily: "Poppins",
+          ),
+          routes: <String, WidgetBuilder> {
+            '/login' : (BuildContext context) => new login.LoginPage(),
+            '/signup' : (BuildContext context) => new signup.SignUp(),
+          },
+          home: new login.LoginPage(),
+        ),
+      );
+    }
+  });    
 }
 
 class Main extends StatefulWidget {
