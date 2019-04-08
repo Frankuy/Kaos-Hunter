@@ -26,13 +26,13 @@ class OrderList extends State<Order> {
       new Text("DP Min: "+ dp[index].toString());
 
     final statecheckharga = state[index]==0 ? null :
-      new Text("Total: " + totalHarga[index].toString());
+      new Text("Total: " + totalHarga[index].toString(),maxLines: 15,);
 
     final printstate = state[index]==0 ?
-        new Text("Menunggu konfirmasi") :
+        new Text("Menunggu konfirmasi",maxLines: 15,) :
       (state[index]==1) ?
-        new Text("Menunggu pembayaran") :
-      new Text("Sedang dikerjakan");
+        new Text("Menunggu pembayaran",maxLines: 15,) :
+      new Text("Sedang dikerjakan",maxLines: 15,);
 
 
     final leftSection = new Container(

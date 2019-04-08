@@ -25,7 +25,7 @@ class OrderDetail1 extends StatelessWidget {
           children : <Widget> [
 
            new Container(
-             padding: EdgeInsets.all(12.0),
+             padding: EdgeInsets.only(top : 12.0, left: 12.0,right:12.0),
              child: new Center(
                child: new Container(
                  width: 250,
