@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import './vendor.dart' as vendor;
+import './orderdetail.dart' as orderdetail;
 
 class Order extends StatefulWidget {
   @override
@@ -7,15 +7,17 @@ class Order extends StatefulWidget {
 }
 
 class OrderList extends State<Order> {
-  List<String> vendorName = ["TokoQ","myD","SKuy"
+  List<String> vendorName = ["TokoQ","myD","SKuy","Lop"
   ];
-  List<int> dp =[100000,200000,300000];
-  List<int> totalHarga =[1000000,500000,800000];
-  List<int> jumlah = [200,10,50];
-  List<int> state = [0,1,2];
+  List<int> dp =[100000,200000,300000,100000];
+  List<int> totalHarga =[1000000,2000000,500000,800000];
+  List<int> jumlah = [200,10,50,40];
+  List<int> state = [0,1,2,3];
   // 0 = menunggu konfirmasi
-  // 1 = menunggu pembayaran
+  // 1 = menunggu pembayaran dp
   // 2 = sedang dikerjakan
+  // 3 = menunggu bayar full
+
 
 
   Widget buildBody(BuildContext ctxt, int index) {
@@ -31,6 +33,7 @@ class OrderList extends State<Order> {
       (state[index]==1) ?
         new Text("Menunggu pembayaran") :
       new Text("Sedang dikerjakan");
+
 
     final leftSection = new Container(
 
@@ -72,10 +75,30 @@ class OrderList extends State<Order> {
       padding: EdgeInsets.only(left: 8.0, right :8.0,top: 4, bottom: 4),
       child: new GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => vendor.ChatDisplay()),
-          );
+          if(state[index]==0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => orderdetail.OrderDetail1()),
+            );
+          }
+          else if(state[index]==1)  {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => orderdetail.OrderDetail2()),
+            );
+          }
+          else if(state[index]==2)  {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => orderdetail.OrderDetail3()),
+            );
+          }
+          else if(state[index]==3)  {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => orderdetail.OrderDetail4()),
+            );
+          }
         },
 
         child: new Container(

@@ -16,38 +16,33 @@ class Home extends StatelessWidget {
         backgroundColor: Color(0xFF3385D9),
       ),
       body: Container(
-        color: Colors.grey[100],
+        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: new Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             new Padding(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  new Text(
-                    "Hai Irfan,", 
-                    style : new TextStyle(fontSize:20.0,),
-                  ),
-                  new Text(
-                    "Mau pesan apa?",
-                    style : new TextStyle(fontSize:20.0,),
-                  ),
-                ],
-              ),
+              padding: EdgeInsets.all(10),
+            ),
+            new Text(
+              "Hai Irfan,", 
+              style : new TextStyle(fontSize:20.0,),
+            ),
+            new Text(
+              "Mau pesan apa?",
+              style : new TextStyle(fontSize:20.0,),
+            ),
+            new Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
             ),
             new Expanded(
-              child : new Container(
-                margin: EdgeInsets.all(10),
-                child : GridView.count(
-                  crossAxisCount: 2,
-                  children: <Widget>[
-                    ButtonChoice(label:"Jaket", image: "images/Jacket.png"),
-                    ButtonChoice(label:"Kaos", image: "images/Kaos.png"),
-                    ButtonChoice(label: "Jersey", image:"images/Jersey.png"),
-                    ButtonChoice(label: "Kemeja", image: "images/Kemeja.png"),
-                  ],
-                ),
+              child : GridView.count(
+                crossAxisCount: 2,
+                children: <Widget>[
+                  ButtonChoice(label:"Jaket", image: "images/Jacket.png"),
+                  ButtonChoice(label:"Kaos", image: "images/Kaos.png"),
+                  ButtonChoice(label: "Jersey", image:"images/Jersey.png"),
+                  ButtonChoice(label: "Kemeja", image: "images/Kemeja.png"),
+                ],
               ),
             ), 
           ],
@@ -66,18 +61,14 @@ class ButtonChoice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
+      color: Color(0xFFFFD200),
       child: new InkWell(
-        borderRadius: BorderRadius.circular(20),
         child : new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new SizedBox(
-              width: 100,
-              height: 100,
+              width: 120,
+              height: 120,
               child: new Image.asset(
                 this.image,
               )
@@ -88,8 +79,6 @@ class ButtonChoice extends StatelessWidget {
             ),
           ],
         ),
-        splashColor: Color(0xFFFFD200),
-        highlightColor: Colors.transparent,
         onTap: () {
 
         },

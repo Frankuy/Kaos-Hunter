@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './review.dart' as review;
+import './itemdetail.dart' as itemdetail;
 
 class ListDisplay extends StatefulWidget {
   @override
@@ -202,37 +204,65 @@ class VendorProfile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        new Text("Like : 1019",
-                          style: new TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12.0,
-                          ),),
+                        new Row(
+                          children: <Widget>[
+                            new Container(
+                              padding: EdgeInsets.only(right: 14.0),
+                              child: new Container(
+                                decoration: new BoxDecoration(
+                                  color: Colors.lightBlue,
+                                  borderRadius: BorderRadius.circular(3.0),
+                                ),
+                                padding: EdgeInsets.all(4.0),
+                                child: new Icon(Icons.favorite,color: Colors.white,),
+                              ),
+                            ),
+                            new Text(":  1019",
+                              style: new TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12.0,
+                              ),),
+                          ],
+                        ),
                         Align(
                           alignment: Alignment.topRight,
                           child: new Row(
+
                             children: <Widget>[
 
-                              new RaisedButton(
-                                color: Colors.lightBlue,
-                                child: new Text("follow"),
-                                onPressed:() {
-                                  Navigator.pop(ctxt);
-                                } ,
-                              ),
                               new Container(
-                                padding: EdgeInsets.only(left: 12),
-                                child: new RaisedButton(
-                                  color: Colors.lightBlue,
-                                  child: new Text("chat"),
-                                  onPressed:() {
-                                    Navigator.push(
-                                      ctxt,
-                                      MaterialPageRoute(builder: (context) => ChatDisplay()),
-                                    );
-                                  } ,
+                                padding: EdgeInsets.only(right: 10.0),
+                                child: new GestureDetector(
+                                  child: new Container(
+                                    decoration: new BoxDecoration(
+                                      borderRadius: BorderRadius.circular(3.0),
+                                      color: Colors.lightBlue,
+
+                                    ),
+                                    padding: EdgeInsets.all(4.0),
+                                    child: new Icon(Icons.add,color: Colors.white,),
+                                  ),
+                                  onTap: () {
+                                    Navigator.pop(ctxt);
+                                  },
                                 ),
+                              ),
+                              new GestureDetector(
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    borderRadius: BorderRadius.circular(3.0),
+                                    color: Colors.lightBlue,
+
+                                  ),
+                                  padding: EdgeInsets.all(4.0),
+                                  child: new Icon(Icons.chat,color: Colors.white,),
+                                ),
+                                onTap: () {
+                                  Navigator.push(ctxt, MaterialPageRoute(builder: (context) => ChatDisplay()),);
+                                },
                               )
+                              
                             ],
                           ),
                         ),
@@ -245,20 +275,47 @@ class VendorProfile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        new Text("Ordered : 20",
-                          style: new TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12.0,
-                          ),),
+                        new Row(
+                          children: <Widget>[
+                            new Container(
+                              padding: EdgeInsets.only(right :14.0),
+                              child: new GestureDetector(
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: Colors.lightBlue,
+                                    borderRadius: BorderRadius.circular(3.0),
+                                  ),
+                                  padding: EdgeInsets.all(4.0),
+                                  child: new Icon(Icons.rate_review,color: Colors.white,),
+                                ),
+                                onTap: () {
+                                  Navigator.push(ctxt, MaterialPageRoute(builder: (context) => review.ReviewDisplay()),);
+                                },
+                              ),
+                            ),
+                            new Text(":   20",
+                              style: new TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12.0,
+                              ),),
+                          ],
+                        ),
                         Align(
                           alignment: Alignment.topRight,
-                          child: new RaisedButton(
-                              color: Colors.lightBlue,
-                              child: new Text("Order Custom"),
-                              onPressed: () {
-                                Navigator.pop(ctxt);
-                              } ,),
+                          child: new Container(
+                            padding: EdgeInsets.only(top: 6.0),
+                            child: new GestureDetector(
+                              child: new Container(
+                                decoration: new BoxDecoration(
+                                  borderRadius: BorderRadius.circular(3.0),
+                                  color: Colors.lightBlue,
+                                ),
+                                padding: EdgeInsets.all(8.0),
+                                child: new Text("Order Custom",style: TextStyle(color: Colors.white),),
+                                ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -269,7 +326,6 @@ class VendorProfile extends StatelessWidget {
           new Container(
             color: Colors.lightBlue,
             child: new Container(
-              padding: EdgeInsets.all(6),
               child: new Center(
                 child: new Text('Galleries',
                   style: new TextStyle(
@@ -284,7 +340,12 @@ class VendorProfile extends StatelessWidget {
             physics: BouncingScrollPhysics(), // if you want IOS bouncing effect, otherwise remove this line
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),//change the number as you want
             children: images.map((url) {
-              return Card(child: Image.network(url));
+              return Card(child: GestureDetector(
+                onTap: () {
+                  Navigator.push(ctxt, MaterialPageRoute(builder: (context) => itemdetail.ItemDetail()));
+                },
+                child: Image.network(url),
+              ));
             }).toList(),
           ),)
           ],
