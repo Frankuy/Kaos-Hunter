@@ -41,8 +41,9 @@ class Profile extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5.0),
                 ),
+                //TODO: Nanti diisi username user yang login, kalau dia login pake email isi aja username nya pake email dia
                 Text(
-                  "irfan212",
+                  "Username",
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.white,
@@ -58,7 +59,7 @@ class Profile extends StatelessWidget {
                 children: <Widget>[
                   Icon(Icons.local_atm, size: 50.0,),
                   Text(
-                    "Rp 10.000"
+                    "Rp 50.000"
                   ),
                 ],
               ),
@@ -83,48 +84,56 @@ class Profile extends StatelessWidget {
           Expanded(
             child: ListView(
               children: <Widget>[
-                ListTile(
-                  leading: Icon(
-                    Icons.favorite,
+                Card (
+                  elevation: 2,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.favorite,
+                    ),
+                    title: Text(
+                      "Vendor Favorit"
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => fvendor.FavoriteVendorDisplay()),
+                      );
+                    },
                   ),
-                  title: Text(
-                    "Vendor Favorit"
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => fvendor.FavoriteVendorDisplay()),
-                    );
-                  },
                 ),
-                ListTile(
-                  leading: Icon(
-                    Icons.history,
+
+                Card (
+                  elevation: 2,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.person,
+                    ),
+                    title: Text(
+                      "Edit Profil"
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => setting.Setting()),
+                      );
+                    },
                   ),
-                  title: Text(
-                    "Riwayat Belanja"
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => upload.Upload()),
-                    );
-                  },
                 ),
-                ListTile(
-                  leading: Icon(
-                    Icons.person,
-                  ),
-                  title: Text(
-                    "Edit Profil"
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => setting.Setting()),
-                    );
-                  },
-                ),
+                
+                // ListTile(
+                //   leading: Icon(
+                //     Icons.history,
+                //   ),
+                //   title: Text(
+                //     "Riwayat Belanja"
+                //   ),
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(builder: (context) => upload.Upload()),
+                //     );
+                //   },
+                // ),
               ],
             ),
           )

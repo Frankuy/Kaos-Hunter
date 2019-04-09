@@ -101,11 +101,12 @@ class OrderList extends State<Order> {
           }
         },
 
-        child: new Container(
-          decoration: BoxDecoration(
-            border: new Border.all(color: Colors.blueAccent),
-            borderRadius: new BorderRadius.all(Radius.circular(9.0))
-          ),
+        child: new Card(
+          // decoration: BoxDecoration(
+          //   border: new Border.all(color: Colors.blueAccent),
+          //   borderRadius: new BorderRadius.all(Radius.circular(9.0))
+          // ),
+          elevation: 3,
           child: new Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,

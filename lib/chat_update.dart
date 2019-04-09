@@ -7,11 +7,14 @@ class Chat extends StatefulWidget {
 }
 
 class Halo extends State<Chat> {
-  List<String> vendorName = ["TokoQ","myD"
-  ];
-  List<String> message = ["halo","hai"
-  ];
-  List<String> unread = ["5","300"];
+  List<String> vendorName = List<String>();
+  List<String> message = List<String>(); 
+  List<String> unread = List<String>();
+  // List<String> vendorName = ["TokoQ","myD"
+  // ];
+  // List<String> message = ["halo","hai"
+  // ];
+  // List<String> unread = ["5","300"];
 
   Widget buildBody(BuildContext ctxt, int index) {
     final leftSection = new Container(
@@ -94,31 +97,61 @@ class Halo extends State<Chat> {
           ),
         ),
       ),
-
     );
   }
 
 
   @override
   Widget build (BuildContext ctxt) {
-    return new Scaffold(
+    if (vendorName.length != 0) {
+      return new Scaffold(
+          appBar: AppBar(
+            title: Text(
+                "Chat"
+            ),
+            backgroundColor: Color(0xFF3385D9),
+          ),
+          body: new Column(
+            children: <Widget>[
+              new Expanded(
+                  child: new ListView.builder
+                    (
+                    itemCount: vendorName.length,
+                    itemBuilder: (BuildContext ctxt, int index) => buildBody(ctxt, index),
+                  )
+              ),
+            ],
+          )
+      );
+    }
+    //KALAU TIDAK ADA CHAT
+    else {
+      return new Scaffold(
         appBar: AppBar(
           title: Text(
               "Chat"
           ),
           backgroundColor: Color(0xFF3385D9),
         ),
-        body: new Column(
-          children: <Widget>[
-            new Expanded(
-                child: new ListView.builder
-                  (
-                  itemCount: vendorName.length,
-                  itemBuilder: (BuildContext ctxt, int index) => buildBody(ctxt, index),
-                )
-            ),
-          ],
-        )
-    );
+        body : Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.chat,
+                size: 200,
+                color: Colors.grey,
+              ),
+              Text(
+                "Belum ada pesan",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ],
+          ),
+        ), 
+      );
+    }
   }
 }
