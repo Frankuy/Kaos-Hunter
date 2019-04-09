@@ -95,6 +95,76 @@ class UploadDisplay extends State<Upload> {
               color: Colors.black,
               height: 1.5,
             ),
+            new Row(
+              children: <Widget>[
+                new Text("S", style: TextStyle(fontSize: 17),),
+                new Container(
+                  padding: EdgeInsets.only(left: 12.0),
+                  width: 70,
+                  decoration: new BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 1)
+                  ),
+                  child: new TextField(
+                  ),
+                )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                new Text("M", style: TextStyle(fontSize: 17),),
+                new Container(
+                  padding: EdgeInsets.only(left: 12.0),
+                  width: 70,
+                  decoration: new BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 1)
+                  ),
+                  child: new TextField(
+                  ),
+                )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                new Text("L", style: TextStyle(fontSize: 17),),
+                new Container(
+                  padding: EdgeInsets.only(left: 12.0),
+                  width: 70,
+                  decoration: new BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 1)
+                  ),
+                  child: new TextField(
+                  ),
+                )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                new Text("XL", style: TextStyle(fontSize: 17),),
+                new Container(
+                  padding: EdgeInsets.only(left: 12.0),
+                  width: 70,
+                  decoration: new BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 1)
+                  ),
+                  child: new TextField(
+                  ),
+                )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                new Text("XXL", style: TextStyle(fontSize: 17),),
+                new Container(
+                  padding: EdgeInsets.only(left: 12.0),
+                  width: 70,
+                  decoration: new BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 1)
+                  ),
+                  child: new TextField(
+                  ),
+                )
+              ],
+            ),
             new Expanded(child: new Text(""),flex: 15,),
             new Expanded(flex: 2 ,child: new Container(
               padding: EdgeInsets.only(bottom: 10.0),
