@@ -39,7 +39,7 @@ class FavoriteVendorList extends State<FavoriteVendorDisplay> {
           new Container(
             padding: new EdgeInsets.all(8.0),
             child: new CircleAvatar(
-              backgroundImage: new NetworkImage('https://picsum.photos/250?image=9'),
+              backgroundColor: Colors.white,
               radius: 45.0,
             ),
           ),

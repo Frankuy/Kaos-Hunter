@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import './choosevendor.dart' as choosevendor;
 
 class Upload extends StatefulWidget {
   @override
@@ -103,10 +102,8 @@ class UploadDisplay extends State<Upload> {
                 color: Colors.lightBlue,
                 child: new Text("Submit"),  textColor: Colors.white,
                 onPressed:() {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => choosevendor.ChooseVendorDisplay()),
-                  );
+                  Navigator.pop(context);
+                  Navigator.pop(context);
                 } ,
               ),
             ))

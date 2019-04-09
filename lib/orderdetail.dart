@@ -32,7 +32,7 @@ class OrderDetail1 extends StatelessWidget {
                  height: 250,
                  decoration: new BoxDecoration(
                    image: new DecorationImage(
-                     image: NetworkImage('https://picsum.photos/250?image=9'),
+                     image: AssetImage("images/jaket1.png"),
                      fit: BoxFit.fill,
                    ),
                  ),
@@ -182,7 +182,7 @@ class OrderDetail2 extends StatelessWidget {
                   height: 250,
                   decoration: new BoxDecoration(
                     image: new DecorationImage(
-                      image: NetworkImage('https://picsum.photos/250?image=9'),
+                      image: AssetImage("images/kaos1.png"),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -310,7 +310,10 @@ class OrderDetail2 extends StatelessWidget {
                         color: Colors.lightBlue,
                         child: new Text("Bayar"),
                         onPressed:() {
-                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => payment.Payment()),
+                          );
                         } ,
                       ),
                       new RaisedButton(
@@ -361,7 +364,7 @@ class OrderDetail3 extends StatelessWidget {
                   height: 250,
                   decoration: new BoxDecoration(
                     image: new DecorationImage(
-                      image: NetworkImage('https://picsum.photos/250?image=9'),
+                      image: AssetImage("images/jaket2.png"),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -516,7 +519,7 @@ class OrderDetail4 extends StatelessWidget {
                   height: 250,
                   decoration: new BoxDecoration(
                     image: new DecorationImage(
-                      image: NetworkImage('https://picsum.photos/250?image=9'),
+                      image: AssetImage("images/kaos2.png"),
                       fit: BoxFit.fill,
                     ),
                   ),

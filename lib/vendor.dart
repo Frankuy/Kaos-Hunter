@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './review.dart' as review;
 import './itemdetail.dart' as itemdetail;
+import './upload.dart' as upload;
 
 class ListDisplay extends StatefulWidget {
   @override
@@ -40,7 +41,7 @@ class DynamicList extends State<ListDisplay> {
           new Container(
             padding: new EdgeInsets.all(8.0),
             child: new CircleAvatar(
-              backgroundImage: new NetworkImage('https://picsum.photos/250?image=9'),
+              backgroundColor: Colors.white,
               radius: 45.0,
             ),
           ),
@@ -111,16 +112,16 @@ class DynamicList extends State<ListDisplay> {
 class VendorProfile extends StatelessWidget {
 
   final List<String> images = [
-    "https://uae.microless.com/cdn/no_image.jpg",
-    "https://images-na.ssl-images-amazon.com/images/I/81aF3Ob-2KL._UX679_.jpg",
-    "https://www.boostmobile.com/content/dam/boostmobile/en/products/phones/apple/iphone-7/silver/device-front.png.transform/pdpCarousel/image.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgUgs8_kmuhScsx-J01d8fA1mhlCR5-1jyvMYxqCB8h3LCqcgl9Q",
-    "https://ae01.alicdn.com/kf/HTB11tA5aiAKL1JjSZFoq6ygCFXaw/Unlocked-Samsung-GALAXY-S2-I9100-Mobile-Phone-Android-Wi-Fi-GPS-8-0MP-camera-Core-4.jpg_640x640.jpg",
-    "https://media.ed.edmunds-media.com/gmc/sierra-3500hd/2018/td/2018_gmc_sierra-3500hd_f34_td_411183_1600.jpg",
-    "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/16q1/665019/2016-chevrolet-silverado-2500hd-high-country-diesel-test-review-car-and-driver-photo-665520-s-original.jpg",
-    "https://www.galeanasvandykedodge.net/assets/stock/ColorMatched_01/White/640/cc_2018DOV170002_01_640/cc_2018DOV170002_01_640_PSC.jpg",
-    "https://media.onthemarket.com/properties/6191869/797156548/composite.jpg",
-    "https://media.onthemarket.com/properties/6191840/797152761/composite.jpg",
+    "images/Jacket.png",
+    "images/jaket1.png",
+    "images/jaket2.png",
+    "images/Jersey.png",
+    "images/Kaos.png",
+    "images/kaos1.png",
+    "images/kaos2.png",
+    "images/Kemeja.png",
+    "images/Jersey.png",
+    "images/jaket1.png",
   ];
 
   @override
@@ -312,7 +313,7 @@ class VendorProfile extends StatelessWidget {
                                 child: new Text("Order Custom",style: TextStyle(color: Colors.white),),
                                 ),
                               onTap: (){
-                                
+                                Navigator.push(ctxt, MaterialPageRoute(builder: (context) => upload.Upload()),);
                               },
                             ),
                           ),
@@ -339,12 +340,12 @@ class VendorProfile extends StatelessWidget {
           new Expanded(child: new GridView(
             physics: BouncingScrollPhysics(), // if you want IOS bouncing effect, otherwise remove this line
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),//change the number as you want
-            children: images.map((url) {
+            children: images.map((imagesource) {
               return Card(child: GestureDetector(
                 onTap: () {
                   Navigator.push(ctxt, MaterialPageRoute(builder: (context) => itemdetail.ItemDetail()));
                 },
-                //child: Image.network(url),
+                child: Image.asset(imagesource)
               ));
             }).toList(),
           ),)
@@ -441,7 +442,7 @@ class BubbleScreen extends State<ChatDisplay> {
            title: new Row(
              children: <Widget>[
                new CircleAvatar(
-                   backgroundImage: new NetworkImage('https://picsum.photos/250?image=9'),
+                   backgroundColor: Colors.white,
                    radius: 24.0,
                ),
                new Container(
@@ -492,14 +493,6 @@ class BubbleScreen extends State<ChatDisplay> {
               setState(() {});
             }
                 , icon: Icon(Icons.send), label: new Text("Send")),
-            new FlatButton.icon(onPressed: (){
-              chatList.add(chatBox.text);
-              timeList.add(DateTime.now());
-              deliveredList.add(true);
-              isMeList.add(false);
-              chatBox.clear();
-              setState(() {});
-            }, icon: Icon(Icons.send), label: new Text("Send"))
           ],
         ),
       ),

@@ -9,6 +9,8 @@ class Order extends StatefulWidget {
 class OrderList extends State<Order> {
   List<String> vendorName = ["TokoQ","myD","SKuy","Lop"
   ];
+  List<String> gambar= ["images/jaket1.png","images/kaos1.png","images/jaket2.png","images/kaos2.png"
+  ];
   List<int> dp =[100000,200000,300000,100000];
   List<int> totalHarga =[1000000,2000000,500000,800000];
   List<int> jumlah = [200,10,50,40];
@@ -65,7 +67,7 @@ class OrderList extends State<Order> {
       child: Image(
           width: 100,
           height: 100,
-          image: AssetImage("images/Jacket.png")),
+          image: AssetImage(gambar[index])),
     );
 
     return new Container(

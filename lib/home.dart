@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import './choosevendor.dart' as choosevendor;
 
 class Home extends StatelessWidget {
   @override
@@ -91,7 +92,10 @@ class ButtonChoice extends StatelessWidget {
         splashColor: Color(0xFFFFD200),
         highlightColor: Colors.transparent,
         onTap: () {
-
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => choosevendor.ChooseVendorDisplay()),
+          );
         },
       ),
     );

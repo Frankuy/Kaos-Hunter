@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import './profile_config.dart' as profileconfig;
 import './setting.dart' as setting;
 import './vendorfavorite.dart' as fvendor;
-import './upload.dart' as upload;
 
 class Profile extends StatelessWidget {
   @override

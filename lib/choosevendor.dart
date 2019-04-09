@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import './upload.dart' as upload;
 class ChooseVendorDisplay extends StatefulWidget {
   @override
   State createState() => new ChooseVendor();
@@ -45,7 +45,7 @@ class ChooseVendor extends State<ChooseVendorDisplay> {
           new Container(
             padding: new EdgeInsets.all(8.0),
             child: new CircleAvatar(
-              backgroundImage: new NetworkImage('https://picsum.photos/250?image=9'),
+              backgroundColor: Colors.white,
               radius: 45.0,
             ),
           ),
@@ -68,8 +68,10 @@ class ChooseVendor extends State<ChooseVendorDisplay> {
       padding: EdgeInsets.all(12.0),
       child: new GestureDetector(
         onTap: () {
-          Navigator.pop(ctxt);
-          Navigator.pop(ctxt);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => upload.Upload()),
+          );
         },
         child: new Container(
           color: Colors.blue,

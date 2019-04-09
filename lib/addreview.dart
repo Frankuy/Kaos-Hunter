@@ -23,6 +23,17 @@ class AddReview extends StatelessWidget {
                 ),
               ),
             ),
+            new Container(
+              padding: EdgeInsets.all(12.0),
+              child: new TextField (
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                  hintText: "Rating 1 - 5",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                ),
+              ),
+            ),
 
             
 
