@@ -36,8 +36,6 @@ class OrderList extends State<Order> {
 
 
     final leftSection = new Container(
-
-      padding: EdgeInsets.only(left: 16),
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -64,10 +62,9 @@ class OrderList extends State<Order> {
     ;
 
     final rightSection = new Container(
-      padding: EdgeInsets.all(12.0),
       child: Image(
-          width: 150,
-          height: 150,
+          width: 100,
+          height: 100,
           image: AssetImage("images/Jacket.png")),
     );
 
@@ -102,22 +99,20 @@ class OrderList extends State<Order> {
         },
 
         child: new Card(
-          // decoration: BoxDecoration(
-          //   border: new Border.all(color: Colors.blueAccent),
-          //   borderRadius: new BorderRadius.all(Radius.circular(9.0))
-          // ),
           elevation: 3,
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              leftSection,
-              rightSection,
-            ],
+            child: new Container(
+              padding: EdgeInsets.all(20),
+              child: new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                leftSection,
+                rightSection,
+              ],
+            ),
           ),
         ),
       ),
-
     );
   }
 

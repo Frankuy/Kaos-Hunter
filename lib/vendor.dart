@@ -128,16 +128,13 @@ class VendorProfile extends StatelessWidget {
     return new Scaffold(
         appBar: new AppBar(title: new Text("Vendor Profile"),),
         body: new Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-
           children: <Widget>[
             new Container(
               height: 320,
               decoration: new BoxDecoration(
                 image: new DecorationImage(
                   colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
-                  image: NetworkImage('https://picsum.photos/250?image=9'),
+                  image: NetworkImage('https://ecs7.tokopedia.net/img/cache/700/product-1/2016/10/21/1619389/1619389_73f78471-b8fb-47be-bae1-f2534d1120bb.jpg'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -149,7 +146,7 @@ class VendorProfile extends StatelessWidget {
                       new Container(
                         padding: new EdgeInsets.all(16.0),
                         child: new CircleAvatar(
-                          backgroundImage: new NetworkImage('https://picsum.photos/250?image=9'),
+                          //backgroundImage: new NetworkImage('https://picsum.photos/250?image=9'),
                           radius: 45.0,
                         ),
                       ),
@@ -314,6 +311,9 @@ class VendorProfile extends StatelessWidget {
                                 padding: EdgeInsets.all(8.0),
                                 child: new Text("Order Custom",style: TextStyle(color: Colors.white),),
                                 ),
+                              onTap: (){
+                                
+                              },
                             ),
                           ),
                         ),
@@ -344,7 +344,7 @@ class VendorProfile extends StatelessWidget {
                 onTap: () {
                   Navigator.push(ctxt, MaterialPageRoute(builder: (context) => itemdetail.ItemDetail()));
                 },
-                child: Image.network(url),
+                //child: Image.network(url),
               ));
             }).toList(),
           ),)

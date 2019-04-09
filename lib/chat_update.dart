@@ -146,6 +146,7 @@ class Halo extends State<Chat> {
                 "Belum ada pesan",
                 style: TextStyle(
                   fontSize: 20,
+                  color: Colors.grey,
                 ),
               ),
             ],

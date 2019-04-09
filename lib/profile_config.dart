@@ -10,10 +10,9 @@ class Profile_config extends StatelessWidget {
           actions: <Widget>[
           ],
         ),
-        body: Column(
+        body: ListView(
           children: <Widget>[
             new Column(
-              mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 new Container(
@@ -23,77 +22,74 @@ class Profile_config extends StatelessWidget {
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
                     fontSize: 20.0,
-                  ),),
+                  ),
+                ),
+                ),
+                new Container(
+                  padding: EdgeInsets.all(6.0),
+                  child: new Column(
+                    children: <Widget>[
+                      new Container(
+                        height: 50,
+                        padding: EdgeInsets.all(8.0),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text(
+                              "Email",
+                              style: new TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.0,
+                              ),
+                            ),
+                            //TODO : Ini ntar diisi email login yak
+                            new Text("ini@email.com",style: new TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.0,
+                            ),),
+                          ],
+                        ),
+                      ),
+                      new Container(
+                        height: 1.5,
+                        color: Colors.black,
+                      ),
+                      new Container(
+                        height: 50,
+                        padding: EdgeInsets.all(8.0),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            new Text("Status",style: new TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.0,
+                            ),),
+                            new Text("Belum Verifikasi",style: new TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.0,
+                            ),),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
             new Container(
-              padding: EdgeInsets.all(6.0),
-              child: new Column(
-                children: <Widget>[
-                  new Container(
-                    height: 50,
-                    padding: EdgeInsets.all(8.0),
-                    child: new Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        new Text(
-                          "Email",
-                          style: new TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        //TODO : Ini ntar diisi email login yak
-                        new Text("ini@email.com",style: new TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.0,
-                        ),),
-                      ],
-                    ),
-                  ),
-                  new Container(
-                    height: 1.5,
-                    color: Colors.black,
-                  ),
-                  new Container(
-                    height: 50,
-                    padding: EdgeInsets.all(8.0),
-                    child: new Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        new Text("Status",style: new TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.0,
-                        ),),
-                        new Text("Belum Verifikasi",style: new TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.0,
-                        ),),
-                      ],
-                    ),
-                  ),
-                ],
+              padding: EdgeInsets.all(3),
+              color: Color(0xFF3385D9),
+              child: new Text(
+                "Ubah Password",
+                textAlign: TextAlign.center,
+                style: new TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20.0,
+                ),
               ),
             ),
-            new Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                new Container(
-                  padding: EdgeInsets.all(3),
-                  color: Color(0xFF3385D9),
-                  child: new Text(
-                    "Ubah Password",
-                    textAlign: TextAlign.center,
-                    style: new TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+
             new Container(
               padding: EdgeInsets.only(left: 12.0,right: 12.0),
               child: new Column(
@@ -153,45 +149,24 @@ class Profile_config extends StatelessWidget {
                     height: 1.5,
                     color: Colors.black,
                   ),
-                ],
-              ),
-            ),
-            new Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget> [
-                  RaisedButton(
-                    color: Colors.blueAccent,
+
+                  new RaisedButton(
                     child: Text(
                       "Simpan",
                       style: TextStyle(
                         color: Colors.white,
                       ),
                     ),
+                    color: Colors.lightBlue,
                     onPressed: (){
+                      
                     },
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
                   ),
                 ],
               ),
             ),
-            // new Expanded(child: new Text(""),flex: 15,),
-            // new Expanded(flex: 2 ,
-            //   child: new Container(
-            //     padding: EdgeInsets.only(bottom: 10.0),
-            //     child: new RaisedButton(
-            //       color: Colors.lightBlue,
-            //       child: new Text("Simpan"),
-            //       onPressed:() {
-            //         Navigator.pop(context);
-            //       } ,
-            //     ),
-            //   ),
-            // ),
           ],
-        )
+        ),
     );
   }
 }

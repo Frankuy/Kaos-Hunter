@@ -174,9 +174,8 @@ class OrderDetail2 extends StatelessWidget {
         ),
         body: Column (
           children : <Widget> [
-
             new Container(
-              padding: EdgeInsets.all(12.0),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: new Center(
                 child: new Container(
                   width: 250,
@@ -191,7 +190,7 @@ class OrderDetail2 extends StatelessWidget {
               ),
             ),
             new Container(
-              padding: EdgeInsets.all(12.0),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[

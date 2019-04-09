@@ -25,7 +25,6 @@ class ItemDetail extends StatelessWidget {
                   ),
             ),
             new Container(
-              padding: EdgeInsets.all(12.0),
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

@@ -65,12 +65,12 @@ class Profile extends StatelessWidget {
               ),
               Container (
                 margin: EdgeInsets.only(right : 10),
-                child : FlatButton(
+                child : RaisedButton(
                   child: Text(
                     "Tambah",
                     style: TextStyle(color: Colors.white),
                   ),
-                  color: Colors.blue,
+                  color: Colors.lightBlue,
                   onPressed: () {
                   },
                 ),

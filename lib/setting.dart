@@ -6,7 +6,7 @@ class Setting extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
-          title: Text("Pengaturan Akun"),
+          title: Text("Edit Profil"),
           backgroundColor: Color(0xFF3385D9),
           actions: <Widget>[
           ],
@@ -17,8 +17,6 @@ class Setting extends StatelessWidget {
               padding: EdgeInsets.all(12.0),
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-
-
                 children: <Widget>[
                   new Container(
                     padding: EdgeInsets.only(left:12.0),
@@ -76,18 +74,14 @@ class Setting extends StatelessWidget {
                 ],
               ),
             ),
-
-            new Expanded(child: new Text(""),flex: 15,),
-            new Expanded(flex: 2 ,child: new Container(
-              padding: EdgeInsets.only(bottom: 10.0),
-              child: new RaisedButton(
-                color: Colors.lightBlue,
-                child: new Text("Simpan"),  textColor: Colors.white,
-                onPressed:() {
-                  Navigator.pop(context);
-                } ,
-              ),
-            ))
+            new RaisedButton(
+              color: Colors.lightBlue,
+              child: new Text("Simpan"), 
+              textColor: Colors.white,
+              onPressed:() {
+                Navigator.pop(context);
+              } ,
+            ),
           ],
         )
     );
